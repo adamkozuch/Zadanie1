@@ -15,7 +15,7 @@ Zostalo zaimportowanych 6034195 obiektow a import trwal 23 minuty 47 sekund.
 
  
 
-##*import do bazy postgress 
+##*import do bazy postgres 
 -tworzymy tabele za pomocą polecenia 
 #####create table traintable1( Id text, Title text, Body text, Tags text);
 
@@ -28,7 +28,8 @@ Niestety nie udalo mi sie uzyc polecenia explain analyze na tym zapytaniu ale im
 
 
 #1b Zliczenie liczby rekordów 
-W mongo uzywamy 
+## mongo 
+ uzywamy 
 #####db.train.count() 
 wynik jest następujący
 ![](https://cloud.githubusercontent.com/assets/5136443/5113346/358b55f0-702f-11e4-8908-8fde58ce2f26.png)
@@ -41,10 +42,9 @@ Zuzycie pamieci i procesora podczas tego procesu jest nastepujace
 
 
 
-W postgressie używamy
-#####Select count(*) from tabletrain 
-rezultat jest następujący 
-Tutaj zdjecie ze zliczenie
+ ##postgres
+ używamy
+#####Select count(*) from tabletrain; 
 
 
 
@@ -56,7 +56,7 @@ Tutaj zdjecie ze zliczenie
 
 #Zadanie 1c
 
-#*wykonanie w postgress
+#*wykonanie w postgres
 Tabela zawierająca wczytane dane nazywa się tabletrain. Aby zmienić string na tablicę stringów uzywamy w postgressien polecenia 
 
 #####ALTER TABLE tabletrain ALTER COLUMN TAGS TYPE TEXT[] using string_to_array(tags,' ') ;
@@ -81,17 +81,7 @@ Natomiast w drugiej części zadania został uzyty sterowniki Javy
 Zadanie jest wykonane za pomocą następującego kodu:
 
 
-iimport java.net.UnknownHostException;
-import java.util.HashSet;
-import java.util.Set;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.MongoClient;
- 
-public class JavaAgreggations {
  
     public static void main(String[] args) {
         try {
@@ -143,7 +133,7 @@ public class JavaAgreggations {
         }
          
     }
-}
+
 
 Wyniki wykonania kodu sa nastepujace:
 ![](https://cloud.githubusercontent.com/assets/5136443/5113013/7de34cac-702c-11e4-8140-3e583040edc6.png)
