@@ -4,9 +4,10 @@
 time mongoimport --db test --collection trainCollection  --type csv --headerline --file /home/adam/Downloads/Train_.csv 
 
  
--Zrzuty z monitora systemu
- oraz
+Import jest zakonczony z nastepujacymi wynikami:
+![](https://cloud.githubusercontent.com/assets/5136443/5113019/7df80296-702c-11e4-967f-9fa70151854d.png)
 
+Zostalo zaimportowanych 6034195 obiektow a import trwal 23 minuty 47 sekund.
 
  
 
@@ -16,18 +17,20 @@ time mongoimport --db test --collection trainCollection  --type csv --headerline
 
 ##*import do bazy postgress 
 -tworzymy tabele za pomocą polecenia 
-create table traintable1( Id text, Title text, Body text, Tags text);
+#####create table traintable1( Id text, Title text, Body text, Tags text);
 
 
 
 -Używamy polecenia copy aby załadować rekordy
 
-COPY trainTable1(Id,Title,Body, Tags) FROM '~Downloads/Train_.csv' WITH DELIMITER ',' CSV HEADER
+#####COPY trainTable1(Id,Title,Body, Tags) FROM '~Downloads/Train_.csv' WITH DELIMITER ',' CSV HEADER
 Niestety nie udalo mi sie uzyc polecenia explain analyze na tym zapytaniu ale import trwal 32 minuty.
 
 
 #1b Zliczenie liczby rekordów 
-W mongo uzywamy db.train.count() wynik jest następujący
+W mongo uzywamy 
+#####db.train.count() 
+wynik jest następujący
 ![](https://cloud.githubusercontent.com/assets/5136443/5113346/358b55f0-702f-11e4-8908-8fde58ce2f26.png)
 
  
@@ -38,7 +41,9 @@ Zuzycie pamieci i procesora podczas tego procesu jest nastepujace
 
 
 
-W postgressie używamy Select count(*) from tabletrain rezultat jest następujący 
+W postgressie używamy
+#####Select count(*) from tabletrain 
+rezultat jest następujący 
 Tutaj zdjecie ze zliczenie
 
 
@@ -54,24 +59,26 @@ Tutaj zdjecie ze zliczenie
 #*wykonanie w postgress
 Tabela zawierająca wczytane dane nazywa się tabletrain. Aby zmienić string na tablicę stringów uzywamy w postgressien polecenia 
 
-ALTER TABLE tabletrain ALTER COLUMN TAGS TYPE TEXT[] using string_to_array(tags,' ') ;
+#####ALTER TABLE tabletrain ALTER COLUMN TAGS TYPE TEXT[] using string_to_array(tags,' ') ;
 
 Nastepnie zliczamy ilośc rekordów poleceniem 
 
-Select sum(array_length(tags,1)) from tabletrain;
+#####Select sum(array_length(tags,1)) from tabletrain;
 ![](https://cloud.githubusercontent.com/assets/5136443/5113011/7dde53fa-702c-11e4-83d0-1c066f4980e1.png)
 W bzaie znajduje sie 17409994 tagow.
 
-Zeby liiczyc ilosc roznych tagow uzywamy zapytania select : count(*) from (select distinct unnest(tags) from tabletrain) as foo. Wynik jest nastepujacy
+Zeby liiczyc ilosc roznych tagow uzywamy zapytania 
+#####select  count(*) from (select distinct unnest(tags) from tabletrain) as foo. Wynik jest nastepujacy
+
 ![](https://cloud.githubusercontent.com/assets/5136443/5113015/7deae372-702c-11e4-9166-79ecdac2f85b.png)
 W bazie znajduje sie 42048 roznych tagow.
 
-
+##Druga czesc zadania 
 Natomiast w drugiej części zadania został uzyty sterowniki Javy
 
 
 *Sterownik Java 
-Zadanie jest wykonane za pomocą następującego kodu
+Zadanie jest wykonane za pomocą następującego kodu:
 
 
 iimport java.net.UnknownHostException;
