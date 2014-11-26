@@ -1,0 +1,26 @@
+ { 
+    "type": "FeatureCollection",
+    "features": [
+      { 
+                "type": "Feature",
+                "geometry": { 
+                    "coordinates" : [ 151.2034, -33.8851 ], 
+                    "type" : "Point" 
+                },
+                "properties": {
+                    "reference" : "RKJ092", 
+                    "location" : "George St"
+                }
+            }, { 
+                "type": "Feature",
+                "geometry": { 
+                    "coordinates" : [ 151.2034, -33.8850 ]
+                    "type" : "Point" 
+                },
+                "properties": {
+                    "reference" : "GHT078", 
+                    "location" : "Market Pl"
+                }
+            }
+        ]
+    }
