@@ -1,0 +1,4 @@
+{ "_id" : "namibia", "loc" : { "type" : "Point", "coordinates" : [ 17.15, -22.566667 ] } }
+{ "_id" : "augsburg", "loc" : { "type" : "Point", "coordinates" : [ 10.898333, 48.371667 ] } }
+{ "_id" : "brasilia", "loc" : { "type" : "Point", "coordinates" : [ -52.95, -10.65 ] } }
+{ "_id" : "australia", "loc" : { "type" : "Point", "coordinates" : [ 135, -25 ] } }
